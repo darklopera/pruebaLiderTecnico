@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import '../css/Login.css';
 import axios from 'axios';
+import { users } from '../enums/accessUser';
+import Spinner from 'react-bootstrap/Spinner';
 
 export class Login extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            numberPhone: ''
+            numberPhone: '',
+            isLoading: false,
+            isNotFound: false
         };
     }
 
@@ -24,27 +29,43 @@ export class Login extends Component {
         const target = event.target;
         const name = target.name;
 
-        if (this.state[name].length === 10) {
+        if (this.state[name].length == 10) {
             this.login();
+        }
+        else {
+            this.setState({ isLoading: false });
+            this.setState({ isNotFound: false });
         }
     }
 
     login = async () => {
+        this.setState({ isLoading: true });
 
         let request = {
             mobilephone: this.state.numberPhone
         }
 
-        window.location.href = '/home';
-
-        /*
         await axios.post(process.env.REACT_APP_DOMAIN + process.env.REACT_APP_LOGIN, request, {
             xsrfHeaderName: "X-XSRF-TOKEN",
             withCredentials: true
         }).then(res => {
-            console.log(res);
+            if (res.customer) {
+                window.location.href = '/home';
+            }
+        }, err => {
+            this.setState({ isNotFound: true });
+            this.setState({ isLoading: false });
+
+            let user = users.find(x => x.numberPhone == this.state.numberPhone);
+            if (user.numberPhone == this.state.numberPhone) {
+                this.setState({ isLoading: true });
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1000);
+
+            }
+            this.setState({ isNotFound: false });
         });
-        */
     }
 
     render() {
@@ -57,15 +78,26 @@ export class Login extends Component {
                     <span>Ingresa el número de teléfono
                         de tu asesora independiente.</span>
                 </div>
-                <form className='input-container'>
+                <form onSubmit={e => { e.preventDefault(); }} className='input-container'>
                     <input
                         name="numberPhone"
                         type="text"
                         value={this.state.numberPhone}
                         onChange={this.handleInputChange}
-                        maxLength="10" 
-                        onKeyUp={this.verifyInputLength}/>
+                        maxLength="10"
+                        onKeyUp={this.verifyInputLength} />
+                    {
+                        this.state.isNotFound && <span>Este número no es valido o no está registrado.</span>
+                    }
                 </form>
+                <div className='spinner-container'>
+                    {
+                        this.state.isLoading &&
+                        <Spinner animation="border" variant="light">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    }
+                </div>
             </div>
         )
     }
