@@ -13,7 +13,7 @@ Login: En el login tenemos una validación doble para el ingreso de un numero de
 Catalogo: En el catalogo tenemos la lista de los productos con los cuales cuneta la compañía para su venta, desde este es posible revisar las prendas y colores disponibles y si es el usuario deseo puede hacer una preselección de los productos en su carro de compras, para finalizarse pagando y retirando los productos en 1 de las tiendas de la compañía.
 
 Para ejecutar el proyecto puede ingresar al link:
-Xxxxxxxxxxxxxxxx
+https://pruebatissini.herokuapp.com/
 
 
 Para ejecutar el proyuecto en local debe:
