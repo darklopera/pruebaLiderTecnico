@@ -1,6 +1,9 @@
 Presentación de prueba para Líder Técnico
+
 Tissini
+
 Oscar Camilo Lopera Lopera
+
 3113175080
 
 Para el desarrollo de esta prueba se realizó la creación de 2 vistas principales:
