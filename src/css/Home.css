@@ -1,0 +1,88 @@
+.footer-container {
+    height: 90px;
+    width: 100%;
+    background: #bdbdbd;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.catalogue {
+    height: 100%;
+    width: 90px;
+    background: transparent;
+}
+
+.cart, .catalogue {
+    height: 100%;
+    width: 50%;
+    background: transparent;
+    border: none;
+    border-left: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.catalogue {
+    border-right: 1px solid;
+    border-left: none;
+}
+.cart:hover, .catalogue:hover {
+    background-color: #8f8f8f;
+}
+
+.cart img, .catalogue img {
+    width: 25px;
+}
+
+.cart span, .catalogue span {
+
+}
+
+.body-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 90px;
+}
+
+.body-container .card {
+    width: 23.5%;
+    margin: 10px 10px;
+    box-shadow: -1px 1px 15px -1px #000000;
+}
+
+.footer-cart-container {
+    height: 60px;
+    width: 100%;
+    background: #bdbdbd;
+    position: fixed;
+    bottom: 90px;
+    border: none;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+}
+.footer-cart-container:hover {
+    background-color: #8f8f8f;
+}
+
+.body-container .card .card-img-top {
+    height: 300px;
+}
+
+.button-buy {
+    width: 100%;
+}
+
+.msg-empty {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 780px) {
+    .body-container .card {
+        width: 100%;
+    }
+}

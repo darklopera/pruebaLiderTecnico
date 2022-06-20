@@ -4,5 +4,8 @@ export const users = [
     },
     {
         numberPhone: '9999999999'
+    },
+    {
+        numberPhone: '7865470213'
     }
 ];
